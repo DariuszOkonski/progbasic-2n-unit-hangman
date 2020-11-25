@@ -1,21 +1,6 @@
-def get_lives():
-    ascii_number_3 = 51
-    ascii_number_7 = 55
+import os
 
-    while True:
-        lives = input("Choose game level: ")
-        lives = lives[0:1]
-
-        if(lives == ''):
-            print("level can not be empty")
-            continue
-
-        if ord(lives) < ascii_number_3 or ord(lives) > ascii_number_7:
-            print("level has to be between 3 - 7")
-            continue
-        return int(lives)
-
-def menu():
+def display_menu():
     print("HANGMAN")
     print("=======")
     print("7 - very easy")
@@ -23,10 +8,36 @@ def menu():
     print("5 - medium")
     print("4 - hard")
     print("3 - very hard")
-    lives = get_lives()
 
-    print(lives)
-    print(type(lives))
+def get_lives():
+    ascii_number_3 = 51
+    ascii_number_7 = 55
+
+    while True:
+        lives = input("Choose game level: ")
+        lives = lives[0:1]
+        
+        # os.system('cls')
+        
+        if(lives == ''):
+            # display_menu()
+            print("level can not be empty")
+            continue
+
+        if ord(lives) < ascii_number_3 or ord(lives) > ascii_number_7:
+            # display_menu()
+            print("level has to be between 3 - 7")
+            continue
+        
+        break
+    return int(lives)
+
+def menu():
+    os.system('cls')    
+    display_menu()
+    lives = get_lives()
+    return lives; 
+
 
 def get_word_to_quess():
 
@@ -35,7 +46,8 @@ def get_word_to_quess():
 # =========================================
 
 
-menu()
+lives = menu()
+print(lives)
 
 
 
