@@ -39,19 +39,28 @@ def menu():
     return lives; 
 
 
+def read_file(path):
+    with open(path) as f:
+        lines = f.readlines()
+    return lines
+
 def get_word_to_quess():
+    path = 'countries-and-capitals.txt'
+
+    countries = read_file(path)
+    print(countries)
 
     return "Some world"
 
 # =========================================
 
 
-lives = menu()
-print(lives)
+# get lives funcionality =======
+# lives = menu()
+# print(lives)
 
-
-
-
+word = get_word_to_quess()
+print(word)
 
 # def play(word, lives = 7):
 #     pass

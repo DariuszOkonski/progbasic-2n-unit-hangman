@@ -15,8 +15,8 @@ POZIOMY GRY
 
 
 ======== ALGORYTM =========
--   wyswietlić menu programu
--   zwrócić poziom od 7 do 3 do zmiennej LIVES - zrobić walidację, program może przyjąć tylko liczby z zakresu 3-7
+# -   wyswietlić menu programu
+# -   zwrócić poziom od 7 do 3 do zmiennej LIVES - zrobić walidację, program może przyjąć tylko liczby z zakresu 3-7
 -   odczytać plik i zwrócić losowe państwo do zmiennej WORLD w zależności od wprowadzonego poziomu
 
 - ==================  dalej wszystko będzie się działo w funkcji PLAY
