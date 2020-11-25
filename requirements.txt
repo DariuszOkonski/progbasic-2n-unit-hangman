@@ -1,37 +1,3 @@
-IMPLEMENTACJA FUNKCJI play(world, lives) ================================
-- funcja używa parametru "world" jako słowo do zgadnięcia, oraz "lives" jako ilość możliwych pomyłek
-- inicjalizacja początkowego stanu gry wyświetlana jest jako _ _ _ _ _, jedno podkreślenie pod każdą literę zmiennej "world"
-- stan gry jest wyświetlany jako _ o _ _ d _ _ kiedy któraś z liter w zmiennej "world" zostanie odkryta
-- możliwość wprowadzenia wszystkich liter kiedy użytkownik domyśla się już hasła do odgadnięcia
-- kiedy wprowadzana litera nie znajduję się w zmiennej "world" to tracone jest jedno życie
-- kiedy litera została już raz wprowadzona to użytkownik jest o tym informowany i nie traci życia
-- kiedy hasło nie jest odgadnięte to zostaje wyświetlone użytkownikowi kiedy już nie ma więcej żyć
-- użytkownik wygrywa kiedy już wszystkie litery w zmiennej "world" zostały odgadnięte
-- użytkownik przegrywa kiedy liczba żyć spada do 0
-- kiedy użytkownik wpisze "quit", program wyświetla "good-bye" i się kończy
-
-WRAŻLIWOŚĆ KLAWISZY
-- zarówno duże jak i małe litery uważane są za prawidłowe
-- duże i małe litery odsłaniają tę literę np. jeśli w "world" jest gdzieś mała litera c to wpisująć C także ją odsłonimy
-- w powtórzeniach (kiedy jakaś litera została już raz wprowadzona) też nie rozróżniamy wielkości liter
-- w wyświetleniach litery są jednak wyświetlane w takiej wielkości jak były orginalnie w zmiennej "world"
-
-GRAFIKA
-- The game state display is accompanied by an ASCII art depending on the lives left
-- The art sequence is adapted to the starting value of the lives parameter (at least between 3 and 7) - this means that the loosing picture is always the same
-
-ŁADOWANIE DANYCH Z PLIKU
-- gra losowo ładuje państwo z pliku countries-and-capitals.txt przy każdej nowej grze
-
-POZIOMY GRY
-- gra rozpoczyna się z wyświetlenem menu z poziomami, nie możemy zmienić funkcji play()
-- zakres państw do odgadnięcia i ilość żyć zależy od wybranego poziomu
-
-WSKAZÓWKI
-- Jako że stringi są niemutowalne to rozważ użycie struktur danych takich jak listy albo sets
-- Radzi się użycie struktury set() do przechowywanie liter które zostały już raz podane
-- Postaraj się stworzyć 3-6 różnych funkcji odseparowanych od głównej funcji, które zajmowały by się walidacją danych, wyświetlaniem menu. Think of the input requirements and the results of these units! Add the necessary inputs as parameters, and return the results that is needed by the caller side!
-
 WYMAGANIA JĘZYKOWE - użyć:
 listy i stringi
 pliki
@@ -72,3 +38,41 @@ POZIOMY GRY
 - zapytać czy grać raz jeszcze:
     - jeśli tak to wyświetlić ponownie poziomy
     - jeśli nie to opuścić grę  
+
+
+
+
+
+IMPLEMENTACJA FUNKCJI play(world, lives) ================================
+- funcja używa parametru "world" jako słowo do zgadnięcia, oraz "lives" jako ilość możliwych pomyłek
+- inicjalizacja początkowego stanu gry wyświetlana jest jako _ _ _ _ _, jedno podkreślenie pod każdą literę zmiennej "world"
+- stan gry jest wyświetlany jako _ o _ _ d _ _ kiedy któraś z liter w zmiennej "world" zostanie odkryta
+- możliwość wprowadzenia wszystkich liter kiedy użytkownik domyśla się już hasła do odgadnięcia
+- kiedy wprowadzana litera nie znajduję się w zmiennej "world" to tracone jest jedno życie
+- kiedy litera została już raz wprowadzona to użytkownik jest o tym informowany i nie traci życia
+- kiedy hasło nie jest odgadnięte to zostaje wyświetlone użytkownikowi kiedy już nie ma więcej żyć
+- użytkownik wygrywa kiedy już wszystkie litery w zmiennej "world" zostały odgadnięte
+- użytkownik przegrywa kiedy liczba żyć spada do 0
+- kiedy użytkownik wpisze "quit", program wyświetla "good-bye" i się kończy
+
+WRAŻLIWOŚĆ KLAWISZY
+- zarówno duże jak i małe litery uważane są za prawidłowe
+- duże i małe litery odsłaniają tę literę np. jeśli w "world" jest gdzieś mała litera c to wpisująć C także ją odsłonimy
+- w powtórzeniach (kiedy jakaś litera została już raz wprowadzona) też nie rozróżniamy wielkości liter
+- w wyświetleniach litery są jednak wyświetlane w takiej wielkości jak były orginalnie w zmiennej "world"
+
+GRAFIKA
+- The game state display is accompanied by an ASCII art depending on the lives left
+- The art sequence is adapted to the starting value of the lives parameter (at least between 3 and 7) - this means that the loosing picture is always the same
+
+ŁADOWANIE DANYCH Z PLIKU
+- gra losowo ładuje państwo z pliku countries-and-capitals.txt przy każdej nowej grze
+
+POZIOMY GRY
+- gra rozpoczyna się z wyświetlenem menu z poziomami, nie możemy zmienić funkcji play()
+- zakres państw do odgadnięcia i ilość żyć zależy od wybranego poziomu
+
+WSKAZÓWKI
+- Jako że stringi są niemutowalne to rozważ użycie struktur danych takich jak listy albo sets
+- Radzi się użycie struktury set() do przechowywanie liter które zostały już raz podane
+- Postaraj się stworzyć 3-6 różnych funkcji odseparowanych od głównej funcji, które zajmowały by się walidacją danych, wyświetlaniem menu. Think of the input requirements and the results of these units! Add the necessary inputs as parameters, and return the results that is needed by the caller side!
