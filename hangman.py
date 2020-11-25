@@ -1,4 +1,7 @@
 def get_lives():
+    ascii_number_3 = 51
+    ascii_number_7 = 55
+
     while True:
         lives = input("Choose game level: ")
         lives = lives[0:1]
@@ -7,7 +10,7 @@ def get_lives():
             print("level can not be empty")
             continue
 
-        if ord(lives) < 51 or ord(lives) > 55:
+        if ord(lives) < ascii_number_3 or ord(lives) > ascii_number_7:
             print("level has to be between 3 - 7")
             continue
         return int(lives)
