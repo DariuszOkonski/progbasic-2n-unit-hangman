@@ -1,7 +1,10 @@
 import os
 import random
 
-def display_menu():
+def clear_console():
+    os.system('cls')
+
+def display_menu_options():
     print("HANGMAN")
     print("=======")
     print("7 - very easy")
@@ -18,15 +21,11 @@ def get_lives():
         lives = input("Choose game level: ")
         lives = lives[0:1]
         
-        # os.system('cls')
-        
         if(lives == ''):
-            # display_menu()
             print("level can not be empty")
             continue
 
         if ord(lives) < ascii_number_3 or ord(lives) > ascii_number_7:
-            # display_menu()
             print("level has to be between 3 - 7")
             continue
         
@@ -35,10 +34,9 @@ def get_lives():
 
 def menu():
     os.system('cls')    
-    display_menu()
+    display_menu_options()
     lives = get_lives()
     return lives; 
-
 
 def read_file(path):
     with open(path) as f:
@@ -57,17 +55,22 @@ def get_word_to_quess():
 
 # =========================================
 
+def play(word, lives = 7):
+    clear_console()
 
-# get lives funcionality =======
-# lives = menu()
-# print(lives)
+    print(word)
+    print(lives)
+    pass
 
-word = get_word_to_quess()
-print(word)
-print(len(word))
 
-# def play(word, lives = 7):
-#     pass
+def run_game():
+    lives = menu()
+    word = get_word_to_quess()
+    play(word, lives)
+
+# ==========================================
+
+run_game()
 
 
 # play('Codecool', 6)
