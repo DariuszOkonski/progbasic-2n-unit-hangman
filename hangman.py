@@ -3,3 +3,5 @@ def play(word, lives):
 
 
 play('Codecool', 6)
+
+print("Hangman")
