@@ -53,20 +53,26 @@ def get_word_to_quess():
 
     return word
 
+def change_word_to_list(word):
+    return list(word)
 # =========================================
 
 def play(word, lives = 7):
     clear_console()
 
-    print(word)
-    print(lives)
+
+    word = change_word_to_list(word)
+
+    print(type(word), word, len(word))
+    print(type(lives), lives)
     pass
 
 
 def run_game():
-    lives = menu()
-    word = get_word_to_quess()
-    play(word, lives)
+    # lives = menu()
+    # word = get_word_to_quess()
+    # play(word, lives)
+    play('Hong Kong', 5)
 
 # ==========================================
 
