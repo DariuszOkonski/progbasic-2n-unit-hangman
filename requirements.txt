@@ -20,7 +20,7 @@ POZIOMY GRY
 # -   odczytać plik i zwrócić losowe państwo do zmiennej WORLD w zależności od wprowadzonego poziomu
 
 - ==================  dalej wszystko będzie się działo w funkcji PLAY
--   wyswietlić initial state of game _ _ _ _ _ oraz liczbę żyć(lives)
+# -   wyswietlić initial state of game _ _ _ _ _ oraz liczbę żyć(lives)
 -   wyświetlić wprowadzone litery
 -   pobrać literę od użytkownika z zakresu a-z A-Z - walidacja danych
 -   jeśli użytkownik wprowadzi "quit" to zakończyć grę natychmiast
