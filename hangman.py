@@ -110,14 +110,6 @@ def play(word, lives = 7):
 
     display_current_state(guess_state, lives)
 
-    # print(word)
-    # print(guess_state)
-
-    # print(type(word), word, len(word))
-    # print(type(lives), lives)
-    pass
-
-
 def run_game():
     # lives = menu()
     # word = get_word_to_quess()
