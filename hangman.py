@@ -21,7 +21,7 @@ def get_lives():
         lives = input("Choose game level: ")
         lives = lives[0:1]
         
-        if(lives == ''):
+        if lives == '':
             print("level can not be empty")
             continue
 
@@ -73,6 +73,35 @@ def display_current_state(word, lives):
     print(' '.join(word))
     print("")
 
+def get_next_letter():
+    ascii_letter_a = 97
+    ascii_letter_z = 122
+    # ascii_letter_A = 65
+    # ascii_letter_Z = 90
+
+    quit_game = False
+
+    while True:
+        letter_pressed = input("Add letter: ").lower()
+
+        if letter_pressed == '':
+            print('letter can not be empty')
+            continue
+        
+        if letter_pressed == 'quit':
+            quit_game = True
+            return ('', quit_game)
+
+        letter_pressed = letter_pressed[0:1]
+        letter_ascii = ord(letter_pressed)
+        
+        if letter_ascii < ascii_letter_a or letter_ascii > ascii_letter_z:
+            print('letter has to be at range of a-z or A-Z')
+            continue
+
+        break
+
+    return (letter_pressed, quit_game)
 # =========================================
 
 def play(word, lives = 7):
@@ -100,7 +129,9 @@ def run_game():
 
 # ==========================================
 
-run_game()
+# run_game()
 
+letter = get_next_letter()
+print(letter)
 
 # play('Codecool', 6)
