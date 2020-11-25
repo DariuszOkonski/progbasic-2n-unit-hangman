@@ -1,4 +1,4 @@
-def play(word, lives):
+def play(word, lives = 7):
     pass
 
 

@@ -1,28 +1,73 @@
-# levels 
-# 7 very easy
-# 6 easy
-# 5 medium
-# 4 hard
-# 3 very hard
+WYMAGANIA JĘZYKOWE - użyć:
+listy i stringi
+pliki
+walidacja danych wejsciowych
+obsłużyć przypadki normalne i brzegowe
+wykorzystać kod ASCII
 
 
-# - wyswietlić menu programu
-# - zwrócić poziom od 7 do 3 do zmiennej LIVES
-# - odczytać plik i zwrócić losowe państwo do zmiennej WORLD
+POZIOMY GRY 
+7 very easy
+6 easy
+5 medium
+4 hard
+3 very hard
 
-# - ==================  dalej wszystko będzie się działo w funkcji PLAY
-# - wyswietlić initial state of game _ _ _ _ _ oraz liczbę żyć
-# - pobrać literę od użytkownika z zakresu a-z A-Z
 
-# - sprawdzić czy litera znajduje się w zmiennej WORLD: 
-#       jeśli tak to wyświetlić stan np _ a r s _ _
-#       jeśli nie to zabrać jedno życie
-#       jeśli podana litera była już wciśnięta to zawiadomić o tym użytkownika
+===== ALGORYTM =====
+- wyswietlić menu programu
+- zwrócić poziom od 7 do 3 do zmiennej LIVES
+- odczytać plik i zwrócić losowe państwo do zmiennej WORLD
 
-# - sprawdzić czy koniec gry:
-#       jeśli użytkownik nie ma już żyć to konieć gry i wyświetlić mu szukane hasło
-#       jeśli odgadł wszystkie to pogratulować wygranej
-# 
-# - zapytać czy grać raz jeszcze:
-#       jeśli tak to wyświetlić ponownie poziomy
-#       jeśli nie to opuścić grę  
+- ==================  dalej wszystko będzie się działo w funkcji PLAY
+- wyswietlić initial state of game _ _ _ _ _ oraz liczbę żyć
+- pobrać literę od użytkownika z zakresu a-z A-Z
+- sprawdzić czy litera nie została już raz pobrana (użyć do tego set()) 
+
+- sprawdzić czy litera znajduje się w zmiennej WORLD: 
+    -   jeśli tak to wyświetlić stan np _ a r s _ _
+    -   jeśli nie to zabrać jedno życie
+    -   jeśli podana litera była już wciśnięta to zawiadomić o tym użytkownika
+
+- sprawdzić czy koniec gry:
+      jeśli użytkownik nie ma już żyć to konieć gry i wyświetlić mu szukane hasło
+      jeśli odgadł wszystkie to pogratulować wygranej
+
+- zapytać czy grać raz jeszcze:
+      jeśli tak to wyświetlić ponownie poziomy
+      jeśli nie to opuścić grę  
+
+
+IMPLEMENTACJA FUNKCJI play(world, lives) ================================
+- funcja używa parametru world jako słowo do zgadnięcia, oraz lives jako ilość możliwych pomyłek
+- inicjalizacja początkowego stanu gry wyświetlana jest jako _ _ _ _ _, jedno podkreślenie pod każdą literę zmiennej "world"
+- stan gry jest wyświetlany jako _ o _ _ d _ _ kiedy któraś z liter w zmiennej "world" zostanie odkryta
+- możliwość wprowadzenia wszystkich liter kiedy użytkownik domyśla się już hasła do odgadnięcia
+- kiedy wprowadzana litera nie znajduję się w zmiennej "world" to tracone jest jedno życie
+- kiedy litera została już raz wprowadzona to użytkownik jest o tym informowany i nie traci życia
+- kiedy hasło nie jest odgadnięte to zostaje wyświetlone użytkownikowi kiedy już nie ma więcej żyć
+- użytkownik wygrywa kiedy już wszystkie litery w zmiennej "world" zostały odgadnięte
+- użytkownik przegrywa kiedy liczba żyć spada do 0
+- kiedy użytkownik wpisze "quit", program wyświetla "good-bye" i się kończy
+
+WRAŻLIWOŚĆ KLAWISZY
+- zarówno duże jak i małe litery uważane są za prawidłowe
+- duże i małe litery odsłaniają tę literę np. jeśli w "world" jest gdzieś mała litera c to wpisująć C także ją odsłonimy
+- w powtórzeniach (kiedy jakaś litera została już raz wprowadzona) też nie rozróżniamy wielkości liter
+- w wyświetleniach litery są jednak wyświetlane w takiej wielkości jak były orginalnie w zmiennej "world"
+
+GRAFIKA
+- The game state display is accompanied by an ASCII art depending on the lives left
+- The art sequence is adapted to the starting value of the lives parameter (at least between 3 and 7) - this means that the loosing picture is always the same
+
+ŁADOWANIE DANYCH Z PLIKU
+- gra losowo ładuje państwo z pliku countries-and-capitals.txt przy każdej nowej grze
+
+POZIOMY GRY
+- gra rozpoczyna się z wyświetlenem menu z poziomami, nie możemy zmienić funkcji play()
+- zakres państw do odgadnięcia i ilość żyć zależy od wybranego poziomu
+
+Hints
+- As strings are immutable (i.e. you cannot change its letters) it is a better idea to store the state of the game (like the revealed and missed letters) with the help of mutable structures (like lists or sets)
+- You are advised to use a set data structure when you have a collection which cannot have duplicated elements
+-Try to create a few (3-6) functions for features that are somewhat separated from the main process (e.g. dealing with the inputs, parts of the display, or the menu). Think of the input requirements and the results of these units! Add the necessary inputs as parameters, and return the results that is needed by the caller side!
