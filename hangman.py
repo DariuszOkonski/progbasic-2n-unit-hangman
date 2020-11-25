@@ -76,8 +76,6 @@ def display_current_state(word, lives):
 def get_next_letter():
     ascii_letter_a = 97
     ascii_letter_z = 122
-    # ascii_letter_A = 65
-    # ascii_letter_Z = 90
 
     quit_game = False
 
