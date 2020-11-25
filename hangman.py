@@ -1,4 +1,5 @@
 import os
+import random
 
 def display_menu():
     print("HANGMAN")
@@ -48,9 +49,11 @@ def get_word_to_quess():
     path = 'countries-and-capitals.txt'
 
     countries = read_file(path)
-    print(countries)
+    single_country = random.choice(countries)
+    
+    word = single_country.split(' ')[0]
 
-    return "Some world"
+    return word
 
 # =========================================
 
@@ -61,6 +64,7 @@ def get_word_to_quess():
 
 word = get_word_to_quess()
 print(word)
+print(len(word))
 
 # def play(word, lives = 7):
 #     pass
