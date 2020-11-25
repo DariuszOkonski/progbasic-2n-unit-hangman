@@ -1,5 +1,5 @@
 IMPLEMENTACJA FUNKCJI play(world, lives) ================================
-- funcja używa parametru world jako słowo do zgadnięcia, oraz lives jako ilość możliwych pomyłek
+- funcja używa parametru "world" jako słowo do zgadnięcia, oraz "lives" jako ilość możliwych pomyłek
 - inicjalizacja początkowego stanu gry wyświetlana jest jako _ _ _ _ _, jedno podkreślenie pod każdą literę zmiennej "world"
 - stan gry jest wyświetlany jako _ o _ _ d _ _ kiedy któraś z liter w zmiennej "world" zostanie odkryta
 - możliwość wprowadzenia wszystkich liter kiedy użytkownik domyśla się już hasła do odgadnięcia
@@ -48,15 +48,17 @@ POZIOMY GRY
 3 very hard
 
 
-===== ALGORYTM =====
-- wyswietlić menu programu
-- zwrócić poziom od 7 do 3 do zmiennej LIVES
-- odczytać plik i zwrócić losowe państwo do zmiennej WORLD
+======== ALGORYTM =========
+-   wyswietlić menu programu
+-   zwrócić poziom od 7 do 3 do zmiennej LIVES - zrobić walidację, program może przyjąć tylko liczby z zakresu 3-7
+-   odczytać plik i zwrócić losowe państwo do zmiennej WORLD w zależności od wprowadzonego poziomu
 
 - ==================  dalej wszystko będzie się działo w funkcji PLAY
-- wyswietlić initial state of game _ _ _ _ _ oraz liczbę żyć
-- pobrać literę od użytkownika z zakresu a-z A-Z
-- sprawdzić czy litera nie została już raz pobrana (użyć do tego set()) 
+-   wyswietlić initial state of game _ _ _ _ _ oraz liczbę żyć
+-   wyświetlić wprowadzone litery
+-   pobrać literę od użytkownika z zakresu a-z A-Z - walidacja danych
+-   jeśli użytkownik wprowadzi "quit" to zakończyć grę natychmiast
+-   sprawdzić czy litera nie została już raz pobrana (użyć do tego set()), jeśli tak to powiadomić użytkownika i pozwolić mu wprowadzić raz jeszcze 
 
 - sprawdzić czy litera znajduje się w zmiennej WORLD: 
     -   jeśli tak to wyświetlić stan np _ a r s _ _
@@ -64,9 +66,9 @@ POZIOMY GRY
     -   jeśli podana litera była już wciśnięta to zawiadomić o tym użytkownika
 
 - sprawdzić czy koniec gry:
-      jeśli użytkownik nie ma już żyć to konieć gry i wyświetlić mu szukane hasło
-      jeśli odgadł wszystkie to pogratulować wygranej
+    -   jeśli użytkownik nie ma już więcej żyć to konieć gry i wyświetlić mu szukane hasło
+    -   jeśli odgadł wszystkie to pogratulować wygranej
 
 - zapytać czy grać raz jeszcze:
-      jeśli tak to wyświetlić ponownie poziomy
-      jeśli nie to opuścić grę  
+    - jeśli tak to wyświetlić ponownie poziomy
+    - jeśli nie to opuścić grę  
