@@ -21,15 +21,14 @@ POZIOMY GRY
 
 - ==================  dalej wszystko będzie się działo w funkcji PLAY
 # -   wyswietlić initial state of game _ _ _ _ _ oraz liczbę żyć(lives)
--   wyświetlić wprowadzone litery
 # -   pobrać literę od użytkownika z zakresu a-z A-Z - walidacja danych
 # -   jeśli użytkownik wprowadzi "quit" to zakończyć grę natychmiast
 # -   sprawdzić czy litera nie została już raz pobrana (użyć do tego set()), jeśli tak to powiadomić użytkownika i pozwolić mu wprowadzić raz jeszcze 
 
 - sprawdzić czy litera znajduje się w zmiennej WORLD: 
-    -   jeśli tak to wyświetlić stan np _ a r s _ _
-    -   jeśli nie to zabrać jedno życie
-    -   jeśli podana litera była już wciśnięta to zawiadomić o tym użytkownika
+    # -   jeśli tak to wyświetlić stan np _ a r s _ _
+    # -   jeśli nie to zabrać jedno życie
+    # -   jeśli podana litera była już wciśnięta to zawiadomić o tym użytkownika
 
 - sprawdzić czy koniec gry:
     -   jeśli użytkownik nie ma już więcej żyć to konieć gry i wyświetlić mu szukane hasło

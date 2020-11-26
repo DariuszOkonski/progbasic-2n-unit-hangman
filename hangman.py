@@ -141,7 +141,7 @@ def play(word, lives = 7):
 
 
     while True:
-        clear_console()
+        # clear_console()
         display_current_state(guess_state, guesses_left)
         
         # pobieramy literę i sprawdzamy czy była już pobrana
@@ -154,7 +154,11 @@ def play(word, lives = 7):
         guess_state, guesses_left = check_letter_in_word(word, guess_state, guesses_left, letter)
 
         sleep(0.9)
-        # print(guess_state, guesses_left)
+        
+        #TODO teraz sprawdzić czy jeszcze zostały życia lub czy hasło zostało już odgadnięte
+        print("Score" )
+        print("zycia: ", guesses_left > 0)
+        print("odgadnięto: ", word == guess_state)
 
 
 def run_game():
