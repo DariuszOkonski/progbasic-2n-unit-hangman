@@ -114,12 +114,25 @@ def check_if_used_letter(used_letters):
 
     return (letter, temp_used_letters, quit_game)
 
+def check_letter_in_word(word, guess_state, guesses_left, letter):
+    index = 0
+    hit = False
+    for item in word:
+        if item.lower() == letter:
+            guess_state[index] = item
+            hit = True
+        index += 1
+    
+    if not hit:
+        guesses_left -= 1
 
+    return (guess_state, guesses_left)
 # =========================================
 
 def play(word, lives = 7):
     clear_console()
 
+    guesses_left = lives
     used_letters = set()
     word = change_word_to_list(word)
     guess_state = initial_quess_state(word)
@@ -127,19 +140,19 @@ def play(word, lives = 7):
 
     while True:
         # clear_console()
-        display_current_state(guess_state, lives)
+        display_current_state(guess_state, guesses_left)
         
         # pobieramy literę i sprawdzamy czy była już pobrana
         letter, used_letters, quit_game = check_if_used_letter(used_letters)
 
+        #
         if quit_game:
+            print(" === GAME TERMINATED BY USER === ")
             break
 
-        print("RESPONSE")
-        print(letter, used_letters, quit_game)
-        
+        guess_state, guesses_left = check_letter_in_word(word, guess_state, guesses_left, letter)
 
-
+        print(guess_state, guesses_left)
 
 
 def run_game():
