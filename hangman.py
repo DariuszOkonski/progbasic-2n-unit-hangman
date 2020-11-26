@@ -4,7 +4,7 @@ import random
 def clear_console():
     os.system('cls')
 
-def display_menu_options():
+def display_difficulty_options():
     print("HANGMAN")
     print("=======")
     print("7 - very easy")
@@ -32,9 +32,9 @@ def get_lives():
         break
     return int(lives)
 
-def menu():
-    os.system('cls')    
-    display_menu_options()
+def choose_difficulty_level():
+    clear_console()   
+    display_difficulty_options()
     lives = get_lives()
     return lives; 
 
@@ -100,18 +100,53 @@ def get_next_letter():
         break
 
     return (letter_pressed, quit_game)
+
+def checkt_if_used_letter(used_letters, letter):
+    temp_used_letters = used_letters
+
+    while letter in temp_used_letters:
+        print(f"You have already used letter: {letter}")
+        letter = get_next_letter()[0]
+        
+    temp_used_letters.add(letter)
+
+    return (letter[0], temp_used_letters)
 # =========================================
 
 def play(word, lives = 7):
     clear_console()
 
+    used_letters = set()
     word = change_word_to_list(word)
     guess_state = initial_quess_state(word)
 
-    display_current_state(guess_state, lives)
+
+    while True:
+        # clear_console()
+        display_current_state(guess_state, lives)
+        
+        # pobieramy następną literę i info czy koniec gry
+        response = get_next_letter()        
+        letter, quit_game = response
+
+        #TODO jeśli quit_game == true to zakończ w tym miejscu
+        
+        # sprawdzamy czy litera była już podana
+        letter, used_letters = checkt_if_used_letter(used_letters, letter)
+
+        print("Response ======")
+        print(letter)
+        print(used_letters)
+        # print("------------------")
+        # print("letter: ",letter)
+        # print("quti_game: ",quit_game)
+        # print("------------------")
+
+
+
 
 def run_game():
-    # lives = menu()
+    # lives = choose_difficulty_level()
     # word = get_word_to_quess()
     # play(word, lives)
     play('Hong Kong', 5)
@@ -119,9 +154,8 @@ def run_game():
 
 # ==========================================
 
-# run_game()
+run_game()
 
-letter = get_next_letter()
-print(letter)
+
 
 # play('Codecool', 6)
