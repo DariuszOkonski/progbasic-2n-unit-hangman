@@ -1,5 +1,6 @@
 import os
 import random
+from time import sleep
 
 def clear_console():
     os.system('cls')
@@ -124,6 +125,7 @@ def check_letter_in_word(word, guess_state, guesses_left, letter):
         index += 1
     
     if not hit:
+        print(f"There is no letter: {letter}")
         guesses_left -= 1
 
     return (guess_state, guesses_left)
@@ -139,20 +141,20 @@ def play(word, lives = 7):
 
 
     while True:
-        # clear_console()
+        clear_console()
         display_current_state(guess_state, guesses_left)
         
         # pobieramy literę i sprawdzamy czy była już pobrana
         letter, used_letters, quit_game = check_if_used_letter(used_letters)
 
-        #
         if quit_game:
             print(" === GAME TERMINATED BY USER === ")
             break
 
         guess_state, guesses_left = check_letter_in_word(word, guess_state, guesses_left, letter)
 
-        print(guess_state, guesses_left)
+        sleep(0.9)
+        # print(guess_state, guesses_left)
 
 
 def run_game():
