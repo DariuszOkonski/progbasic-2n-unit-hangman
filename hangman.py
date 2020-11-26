@@ -101,16 +101,20 @@ def get_next_letter():
 
     return (letter_pressed, quit_game)
 
-def checkt_if_used_letter(used_letters, letter):
+def check_if_used_letter(used_letters):
     temp_used_letters = used_letters
+    # quit_game = False
+    letter, quit_game = get_next_letter()
 
     while letter in temp_used_letters:
         print(f"You have already used letter: {letter}")
-        letter = get_next_letter()[0]
+        letter, quit_game = get_next_letter()
         
     temp_used_letters.add(letter)
 
-    return (letter[0], temp_used_letters)
+    return (letter, temp_used_letters, quit_game)
+
+
 # =========================================
 
 def play(word, lives = 7):
@@ -125,22 +129,15 @@ def play(word, lives = 7):
         # clear_console()
         display_current_state(guess_state, lives)
         
-        # pobieramy następną literę i info czy koniec gry
-        response = get_next_letter()        
-        letter, quit_game = response
+        # pobieramy literę i sprawdzamy czy była już pobrana
+        letter, used_letters, quit_game = check_if_used_letter(used_letters)
 
-        #TODO jeśli quit_game == true to zakończ w tym miejscu
+        if quit_game:
+            break
+
+        print("RESPONSE")
+        print(letter, used_letters, quit_game)
         
-        # sprawdzamy czy litera była już podana
-        letter, used_letters = checkt_if_used_letter(used_letters, letter)
-
-        print("Response ======")
-        print(letter)
-        print(used_letters)
-        # print("------------------")
-        # print("letter: ",letter)
-        # print("quti_game: ",quit_game)
-        # print("------------------")
 
 
 
