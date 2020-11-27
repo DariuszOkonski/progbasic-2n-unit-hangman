@@ -129,6 +129,32 @@ def check_letter_in_word(word, guess_state, guesses_left, letter):
         guesses_left -= 1
 
     return (guess_state, guesses_left)
+
+def lose_game():
+    clear_console()
+    print("You lose game")
+
+def win_game():
+    clear_console()
+    print("You won game")
+
+def repeat_game():
+    quit_game = True
+    while True:
+        print()
+        repeat = input("Repeat game (Y/N): ")
+
+        if repeat == '':
+            print('letter can not be empty')
+            continue
+        
+        repeat = repeat[0:1].lower()
+
+        if repeat == 'y':
+            quit_game = False
+        
+        break
+    return not quit_game
 # =========================================
 
 def play(word, lives = 7):
@@ -149,20 +175,19 @@ def play(word, lives = 7):
 
         if quit_game:
             print(" === GAME TERMINATED BY USER === ")
-            return quit_game
+            return True
 
         guess_state, guesses_left = check_letter_in_word(word, guess_state, guesses_left, letter)
 
-        sleep(0.9)
-        
-        
-        
-        #TODO teraz sprawdzić czy jeszcze zostały życia lub czy hasło zostało już odgadnięte
-        print("Score" )
-        print("zycia: ", guesses_left > 0)
-        print("odgadnięto: ", word == guess_state)
+        sleep(0.9)        
 
+        if guesses_left == 0:
+            lose_game()
+            return False
 
+        if word == guess_state:
+            win_game()
+            return False
 
 def run_game():
     # lives = choose_difficulty_level()
@@ -176,10 +201,8 @@ def run_game():
         if quit_game:
             break
 
-        print("Play again: ")
-        print(quit_game)
-        input("Repeat: ")
-
+        if(not repeat_game()):
+            break
 
 # ==========================================
 
