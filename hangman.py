@@ -149,11 +149,13 @@ def play(word, lives = 7):
 
         if quit_game:
             print(" === GAME TERMINATED BY USER === ")
-            break
+            return quit_game
 
         guess_state, guesses_left = check_letter_in_word(word, guess_state, guesses_left, letter)
 
         sleep(0.9)
+        
+        
         
         #TODO teraz sprawdzić czy jeszcze zostały życia lub czy hasło zostało już odgadnięte
         print("Score" )
@@ -161,12 +163,23 @@ def play(word, lives = 7):
         print("odgadnięto: ", word == guess_state)
 
 
+
 def run_game():
     # lives = choose_difficulty_level()
     # word = get_word_to_quess()
     # play(word, lives)
-    play('Hong Kong', 5)
+    # play('Hong Kong', 5)
     # play('Polska', 5)
+
+    while True:
+        quit_game = play('Hong Kong', 5)
+        if quit_game:
+            break
+
+        print("Play again: ")
+        print(quit_game)
+        input("Repeat: ")
+
 
 # ==========================================
 
