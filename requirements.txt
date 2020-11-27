@@ -31,12 +31,12 @@ POZIOMY GRY
     # -   jeśli podana litera była już wciśnięta to zawiadomić o tym użytkownika
 
 - sprawdzić czy koniec gry:
-    -   jeśli użytkownik nie ma już więcej żyć to konieć gry i wyświetlić mu szukane hasło
-    -   jeśli odgadł wszystkie to pogratulować wygranej
+    # -   jeśli użytkownik nie ma już więcej żyć to konieć gry i wyświetlić mu szukane hasło
+    # -   jeśli odgadł wszystkie to pogratulować wygranej
 
 - zapytać czy grać raz jeszcze:
-    - jeśli tak to wyświetlić ponownie poziomy
-    - jeśli nie to opuścić grę  
+    # - jeśli tak to wyświetlić ponownie poziomy
+    # - jeśli nie to opuścić grę  
 
 
 

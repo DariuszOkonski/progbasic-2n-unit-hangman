@@ -66,12 +66,13 @@ def initial_quess_state(word):
             quess_state.append('_')
     return quess_state
 
-def display_current_state(word, lives):
+def display_current_state(guess_state, lives):
     print("Current Game State: ")
     print("-------------------")
     print("")
     print(f"Lives left: {lives}")
-    print(' '.join(word))
+    print("")
+    print(' '.join(guess_state))
     print("")
 
 def get_next_letter():
@@ -104,7 +105,6 @@ def get_next_letter():
 
 def check_if_used_letter(used_letters):
     temp_used_letters = used_letters
-    # quit_game = False
     letter, quit_game = get_next_letter()
 
     while letter in temp_used_letters:
@@ -125,18 +125,22 @@ def check_letter_in_word(word, guess_state, guesses_left, letter):
         index += 1
     
     if not hit:
+        clear_console()
         print(f"There is no letter: {letter}")
         guesses_left -= 1
+        sleep(2)
 
     return (guess_state, guesses_left)
 
-def lose_game():
+def lose_game(word):
     clear_console()
-    print("You lose game")
+    print("YOU LOST GAME!!!")
+    print("Correct answear is:")
+    print(''.join(word))
 
 def win_game():
     clear_console()
-    print("You won game")
+    print("CONGRATULATIONS!!! You won the game")
 
 def repeat_game():
     quit_game = True
@@ -161,13 +165,14 @@ def play(word, lives = 7):
     clear_console()
 
     guesses_left = lives
+    message = 'hello world'
     used_letters = set()
     word = change_word_to_list(word)
     guess_state = initial_quess_state(word)
 
 
     while True:
-        # clear_console()
+        clear_console()
         display_current_state(guess_state, guesses_left)
         
         # pobieramy literę i sprawdzamy czy była już pobrana
@@ -179,10 +184,8 @@ def play(word, lives = 7):
 
         guess_state, guesses_left = check_letter_in_word(word, guess_state, guesses_left, letter)
 
-        sleep(0.9)        
-
         if guesses_left == 0:
-            lose_game()
+            lose_game(word)
             return False
 
         if word == guess_state:
@@ -190,14 +193,11 @@ def play(word, lives = 7):
             return False
 
 def run_game():
-    # lives = choose_difficulty_level()
-    # word = get_word_to_quess()
-    # play(word, lives)
-    # play('Hong Kong', 5)
-    # play('Polska', 5)
-
     while True:
-        quit_game = play('Hong Kong', 5)
+        lives = choose_difficulty_level()
+        word = get_word_to_quess()
+        quit_game = play(word, lives)
+        # quit_game = play('Gliwice', lives)
         if quit_game:
             break
 
