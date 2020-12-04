@@ -45,15 +45,29 @@ def read_file(path):
         lines = f.readlines()
     return lines
 
-def get_word_to_quess():
+def get_word_to_quess(level):
     path = 'countries-and-capitals.txt'
 
     countries = read_file(path)
+    
+    countries = separate_countries(countries)
+
+    print(countries)
+
     single_country = random.choice(countries)
     
     word = single_country.split(' ')[0]
 
     return word
+
+def separate_countries(countries):
+    tempCountries = []
+
+    for item in countries:
+        tempCountries.append(item.split(' ')[0])
+
+    return tempCountries
+    
 
 def change_word_to_list(word):
     return list(word)
@@ -134,7 +148,7 @@ def check_letter_in_word(word, guess_state, guesses_left, letter):
         clear_console()
         print(f"There is no letter: {letter}")
         guesses_left -= 1
-        sleep(2)
+        sleep(1)
 
     return (guess_state, guesses_left)
 
@@ -206,8 +220,8 @@ def run_game():
     while True:
         lives = choose_difficulty_level()
         word = get_word_to_quess()
-        # quit_game = play(word, lives)
-        quit_game = play('Codecool Fun', lives)
+        quit_game = play(word, lives)
+        # quit_game = play('Codecool Fun', lives)
         if quit_game:
             break
 
@@ -216,7 +230,14 @@ def run_game():
 
 # ==========================================
 
-run_game()
+# run_game()
+
+
+
+word = get_word_to_quess(6)
+print(word)
+
+
 
 
 # play('Codecool', 6)
