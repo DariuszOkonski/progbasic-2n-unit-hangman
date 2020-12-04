@@ -45,6 +45,33 @@ def read_file(path):
         lines = f.readlines()
     return lines
 
+def separate_countries(countries):
+    tempCountries = []
+
+    for item in countries:
+        tempCountries.append(item.split(' ')[0])
+
+    return tempCountries    
+
+def select_countries_level(countries, level):
+    tempCountries = []
+
+    for item in countries:
+        if(level <= 3):
+            if(len(item) <= 6):
+                tempCountries.append(item)
+        if(level == 4):
+            if(len(item) == 7):
+                tempCountries.append(item)
+        if(level == 5):
+            if(len(item) == 8):
+                tempCountries.append(item)
+        if(level >= 6):
+            if(len(item) >= 9):
+                tempCountries.append(item)
+
+    return tempCountries
+
 def get_word_to_quess(level):
     path = 'countries-and-capitals.txt'
 
@@ -52,22 +79,11 @@ def get_word_to_quess(level):
     
     countries = separate_countries(countries)
 
-    print(countries)
+    countries = select_countries_level(countries, level)
 
-    single_country = random.choice(countries)
+    word = random.choice(countries)
     
-    word = single_country.split(' ')[0]
-
     return word
-
-def separate_countries(countries):
-    tempCountries = []
-
-    for item in countries:
-        tempCountries.append(item.split(' ')[0])
-
-    return tempCountries
-    
 
 def change_word_to_list(word):
     return list(word)
@@ -161,7 +177,6 @@ def lose_game(word):
 def win_game():
     clear_console()
     print(pictures_state.get_win_picture())
-    # print("CONGRATULATIONS!!! You won the game")
 
 def repeat_game():
     quit_game = True
@@ -187,7 +202,6 @@ def play(word, lives = 6):
     game_level = lives
 
     guesses_left = lives
-    # message = 'hello world'
     used_letters = set()
     word = change_word_to_list(word)
     guess_state = initial_quess_state(word)
@@ -197,12 +211,11 @@ def play(word, lives = 6):
         clear_console()
         display_current_state(guess_state, guesses_left, used_letters, game_level)
         
-        # pobieramy literę i sprawdzamy czy była już pobrana
+        # get letter and check if already has been taken
         letter, used_letters, quit_game = check_if_used_letter(used_letters)
 
         if quit_game:
             clear_console()
-            # print(" === GAME TERMINATED BY USER === ")
             print(pictures_state.get_terminated_picture())
             return True
 
@@ -219,7 +232,7 @@ def play(word, lives = 6):
 def run_game():
     while True:
         lives = choose_difficulty_level()
-        word = get_word_to_quess()
+        word = get_word_to_quess(lives)
         quit_game = play(word, lives)
         # quit_game = play('Codecool Fun', lives)
         if quit_game:
@@ -230,14 +243,7 @@ def run_game():
 
 # ==========================================
 
-# run_game()
-
-
-
-word = get_word_to_quess(6)
-print(word)
-
-
+run_game()
 
 
 # play('Codecool', 6)
