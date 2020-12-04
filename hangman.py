@@ -1,5 +1,6 @@
 import os
 import random
+import pictures_state
 from time import sleep
 
 def clear_console():
@@ -27,7 +28,7 @@ def get_lives():
             continue
 
         if ord(lives) < ascii_number_3 or ord(lives) > ascii_number_6:
-            print("level has to be between 3 - 7")
+            print("level has to be between 3 - 6")
             continue
         
         break
@@ -71,7 +72,7 @@ def display_current_state(guess_state, lives, used_letters):
     print("-------------------")
     print("")
     print(f"Lives left: {lives}")
-    print(f"Used letters: {used_letters}")
+    print(f"Used letters: {used_letters if len(used_letters) > 0 else ''}")
     print("")
     print(' '.join(guess_state))
     print("")
@@ -142,7 +143,8 @@ def lose_game(word):
 
 def win_game():
     clear_console()
-    print("CONGRATULATIONS!!! You won the game")
+    print(pictures_state.get_win_picture())
+    # print("CONGRATULATIONS!!! You won the game")
 
 def repeat_game():
     quit_game = True
@@ -209,7 +211,6 @@ def run_game():
 # ==========================================
 
 run_game()
-
 
 
 # play('Codecool', 6)
