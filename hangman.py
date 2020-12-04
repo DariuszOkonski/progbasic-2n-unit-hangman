@@ -14,7 +14,7 @@ def display_difficulty_options():
     print("3 - very hard")
 
 def get_lives():
-    # przyjmowanie liczb
+    # numbers range between 3-6
     ascii_number_3 = 51
     ascii_number_6 = 54
 
@@ -66,16 +66,18 @@ def initial_quess_state(word):
             quess_state.append('_')
     return quess_state
 
-def display_current_state(guess_state, lives):
+def display_current_state(guess_state, lives, used_letters):
     print("Current Game State: ")
     print("-------------------")
     print("")
     print(f"Lives left: {lives}")
+    print(f"Used letters: {used_letters}")
     print("")
     print(' '.join(guess_state))
     print("")
 
 def get_next_letter():
+    #letters range between a - z
     ascii_letter_a = 97
     ascii_letter_z = 122
 
@@ -165,7 +167,7 @@ def play(word, lives = 7):
     clear_console()
 
     guesses_left = lives
-    message = 'hello world'
+    # message = 'hello world'
     used_letters = set()
     word = change_word_to_list(word)
     guess_state = initial_quess_state(word)
@@ -173,7 +175,7 @@ def play(word, lives = 7):
 
     while True:
         clear_console()
-        display_current_state(guess_state, guesses_left)
+        display_current_state(guess_state, guesses_left, used_letters)
         
         # pobieramy literę i sprawdzamy czy była już pobrana
         letter, used_letters, quit_game = check_if_used_letter(used_letters)
@@ -196,8 +198,8 @@ def run_game():
     while True:
         lives = choose_difficulty_level()
         word = get_word_to_quess()
-        quit_game = play(word, lives)
-        # quit_game = play('Gliwice', lives)
+        # quit_game = play(word, lives)
+        quit_game = play('Codecool Fun', lives)
         if quit_game:
             break
 
