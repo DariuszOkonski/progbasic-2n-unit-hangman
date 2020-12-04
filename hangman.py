@@ -8,15 +8,15 @@ def clear_console():
 def display_difficulty_options():
     print("HANGMAN")
     print("=======")
-    print("7 - very easy")
     print("6 - easy")
     print("5 - medium")
     print("4 - hard")
     print("3 - very hard")
 
 def get_lives():
+    # przyjmowanie liczb
     ascii_number_3 = 51
-    ascii_number_7 = 55
+    ascii_number_6 = 54
 
     while True:
         lives = input("Choose game level: ")
@@ -26,7 +26,7 @@ def get_lives():
             print("level can not be empty")
             continue
 
-        if ord(lives) < ascii_number_3 or ord(lives) > ascii_number_7:
+        if ord(lives) < ascii_number_3 or ord(lives) > ascii_number_6:
             print("level has to be between 3 - 7")
             continue
         
