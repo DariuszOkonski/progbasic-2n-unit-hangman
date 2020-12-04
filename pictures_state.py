@@ -77,10 +77,10 @@ picture1 = """
 ==================  
 """
 
-level_6 = [picture1, picture2, picture3, picture4, picture5, picture6]
-
-def console_clear():
-    os.system('cls')
+level_6 = [picture6, picture5, picture4, picture3, picture2, picture1]
+level_5 = [picture6, picture5, picture4, picture2, picture1]
+level_4 = [picture6, picture5, picture2, picture1]
+level_3 = [picture6, picture2, picture1]
 
 def get_win_picture():
     return win_game
@@ -91,15 +91,15 @@ def get_loose_picture():
 def get_terminated_picture():
     return terminated_game
 
-# def draw_single_hangman(index):
-#     console_clear()
-#     print(hangman_list[index])
-
-
-# def draw_hangman(hangman_list):
-#     for item in hangman_list:
-#         console_clear()
-#         print(item)
-#         time.sleep(2)
-
-# draw_hangman(hangman_list)
+def get_current_picture(index, level):
+    if level == 6:
+        return level_6[index - 1]
+    if level == 5:
+        return level_5[index - 1]
+        return
+    if level == 4:
+        return level_4[index - 1]
+    if level == 3:
+        return level_3[index - 1]
+    
+    return "No such level"

@@ -67,13 +67,16 @@ def initial_quess_state(word):
             quess_state.append('_')
     return quess_state
 
-def display_current_state(guess_state, lives, used_letters):
+def display_current_state(guess_state, lives, used_letters, game_level):
     print("Current Game State: ")
     print("-------------------")
     print("")
     print(f"Lives left: {lives}")
     print(f"Used letters: {used_letters if len(used_letters) > 0 else ''}")
     print("")
+
+    print(pictures_state.get_current_picture(lives, game_level))
+    
     print(' '.join(guess_state))
     print("")
 
@@ -165,8 +168,9 @@ def repeat_game():
     return not quit_game
 # =========================================
 
-def play(word, lives = 7):
+def play(word, lives = 6):
     clear_console()
+    game_level = lives
 
     guesses_left = lives
     # message = 'hello world'
@@ -177,7 +181,7 @@ def play(word, lives = 7):
 
     while True:
         clear_console()
-        display_current_state(guess_state, guesses_left, used_letters)
+        display_current_state(guess_state, guesses_left, used_letters, game_level)
         
         # pobieramy literę i sprawdzamy czy była już pobrana
         letter, used_letters, quit_game = check_if_used_letter(used_letters)
