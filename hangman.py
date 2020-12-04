@@ -137,7 +137,7 @@ def check_letter_in_word(word, guess_state, guesses_left, letter):
 
 def lose_game(word):
     clear_console()
-    print("YOU LOST GAME!!!")
+    print(pictures_state.get_loose_picture())
     print("Correct answear is:")
     print(''.join(word))
 
@@ -183,7 +183,9 @@ def play(word, lives = 7):
         letter, used_letters, quit_game = check_if_used_letter(used_letters)
 
         if quit_game:
-            print(" === GAME TERMINATED BY USER === ")
+            clear_console()
+            # print(" === GAME TERMINATED BY USER === ")
+            print(pictures_state.get_terminated_picture())
             return True
 
         guess_state, guesses_left = check_letter_in_word(word, guess_state, guesses_left, letter)

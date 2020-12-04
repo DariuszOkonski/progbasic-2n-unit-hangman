@@ -1,6 +1,15 @@
 import time
 import os
 
+terminated_game =  """
+    ||=====|
+    |/    
+GAME TERMINATED BY USER
+    || 
+    ||  
+==================  
+"""
+
 win_game =  """
     ||=====|
     |/    
@@ -76,9 +85,15 @@ def console_clear():
 def get_win_picture():
     return win_game
 
-def draw_single_hangman(index):
-    console_clear()
-    print(hangman_list[index])
+def get_loose_picture():
+    return loose_game
+
+def get_terminated_picture():
+    return terminated_game
+
+# def draw_single_hangman(index):
+#     console_clear()
+#     print(hangman_list[index])
 
 
 # def draw_hangman(hangman_list):
