@@ -233,8 +233,8 @@ def run_game():
     while True:
         lives = choose_difficulty_level()
         word = get_word_to_quess(lives)
-        quit_game = play(word, lives)
-        # quit_game = play('Codecool Fun', lives)
+        # quit_game = play(word, lives)
+        quit_game = play('Codecool Fun', lives)
         if quit_game:
             break
 
